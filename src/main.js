@@ -10,6 +10,7 @@ let renderTimer;
 let lastValue = '';
 
 const escapeWifi = (value) => value.replace(/([\\;,:"])/g, '\\$1');
+const escapeVCard = (value) => value.replace(/\\/g, '\\\\').replace(/([;,])/g, '\\$1').replace(/\r?\n/g, '\\n');
 
 function getValue() {
   if (state.type === 'text') return $('#textInput').value.trim();
@@ -19,6 +20,21 @@ function getValue() {
     const security = $('#securityInput').value;
     const password = $('#passwordInput').value;
     return `WIFI:T:${security};S:${escapeWifi(ssid)};P:${escapeWifi(password)};;`;
+  }
+  if (state.type === 'contact') {
+    const name = $('#contactName').value.trim();
+    if (!name) return '';
+    const phone = $('#contactPhone').value.trim();
+    const email = $('#contactEmail').value.trim();
+    const company = $('#contactCompany').value.trim();
+    const website = $('#contactUrl').value.trim();
+    const lines = ['BEGIN:VCARD', 'VERSION:3.0', `N:;${escapeVCard(name)};;;`, `FN:${escapeVCard(name)}`];
+    if (company) lines.push(`ORG:${escapeVCard(company)}`);
+    if (phone) lines.push(`TEL;TYPE=CELL:${escapeVCard(phone)}`);
+    if (email) lines.push(`EMAIL:${escapeVCard(email)}`);
+    if (website) lines.push(`URL:${escapeVCard(website)}`);
+    lines.push('END:VCARD');
+    return lines.join('\n');
   }
   const url = $('#urlInput').value.trim();
   if (!url || url === 'https://') return '';
@@ -86,7 +102,7 @@ $$('.type-tab').forEach((tab) => {
   });
 });
 
-['#urlInput', '#textInput', '#ssidInput', '#passwordInput', '#securityInput'].forEach((selector) => {
+['#urlInput', '#textInput', '#ssidInput', '#passwordInput', '#securityInput', '#contactName', '#contactPhone', '#contactEmail', '#contactCompany', '#contactUrl'].forEach((selector) => {
   $(selector).addEventListener('input', () => {
     if (selector === '#textInput') $('#charCount').textContent = $('#textInput').value.length;
     scheduleRender();

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f5f2e9" />
-    <meta name="description" content="Crea códigos QR personalizados y descárgalos en PNG o SVG." />
+    <meta name="description" content="Crea códigos QR personalizados para enlaces, Wi-Fi, contactos o textos y descárgalos en PNG o SVG." />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>QRama — Generador de códigos QR</title>
   </head>
@@ -42,6 +42,10 @@
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0M12 20h.01M2 9a16 16 0 0 1 20 0"/></svg>
               Wi-Fi
             </button>
+            <button class="type-tab" type="button" role="tab" aria-selected="false" data-type="contact">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+              Contacto
+            </button>
           </div>
 
           <div id="urlFields" class="field-group content-fields">
@@ -59,6 +63,14 @@
             <div class="field-group"><label for="ssidInput">NOMBRE DE LA RED</label><input id="ssidInput" type="text" placeholder="Mi Wi-Fi" autocomplete="off" /></div>
             <div class="field-group"><label for="passwordInput">CONTRASEÑA</label><input id="passwordInput" type="text" placeholder="Contraseña" autocomplete="off" /></div>
             <div class="field-group"><label for="securityInput">SEGURIDAD</label><select id="securityInput"><option value="WPA">WPA / WPA2</option><option value="WEP">WEP</option><option value="nopass">Sin contraseña</option></select></div>
+          </div>
+
+          <div id="contactFields" class="contact-fields content-fields" hidden>
+            <div class="field-group field-wide"><label for="contactName">NOMBRE COMPLETO</label><input id="contactName" type="text" placeholder="Víctor Peña" autocomplete="name" /></div>
+            <div class="field-group"><label for="contactPhone">TELÉFONO</label><input id="contactPhone" type="tel" inputmode="tel" placeholder="+34 600 000 000" autocomplete="tel" /></div>
+            <div class="field-group"><label for="contactEmail">EMAIL</label><input id="contactEmail" type="email" inputmode="email" placeholder="hola@ejemplo.com" autocomplete="email" /></div>
+            <div class="field-group"><label for="contactCompany">EMPRESA</label><input id="contactCompany" type="text" placeholder="Nombre de empresa" autocomplete="organization" /></div>
+            <div class="field-group"><label for="contactUrl">SITIO WEB</label><input id="contactUrl" type="url" inputmode="url" placeholder="https://ejemplo.com" autocomplete="url" /></div>
           </div>
 
           <div class="divider"></div>

@@ -44,7 +44,7 @@ h1 em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
 .step-heading p { margin: 1px 0 4px; font-size: 9px; font-weight: 850; letter-spacing: .18em; }
 .step-heading h2 { margin: 0; font-size: 21px; letter-spacing: -.035em; }
 
-.type-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 24px; }
+.type-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 24px; }
 .type-tab { min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--line); background: #faf9f5; font-size: 12px; font-weight: 750; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
 .type-tab:hover { transform: translateY(-2px); border-color: var(--ink); }
 .type-tab.is-active { border-color: var(--ink); background: var(--ink); color: white; }
@@ -62,6 +62,8 @@ h1 em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
 .char-count { position: absolute; right: 10px; bottom: 8px; color: #96928b; font-size: 9px; letter-spacing: .08em; }
 .wifi-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .wifi-fields .field-group:last-child { grid-column: 1 / -1; }
+.contact-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.contact-fields .field-wide { grid-column: 1 / -1; }
 .divider { height: 1px; margin: 34px 0; background: var(--line); }
 
 .style-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -140,8 +142,9 @@ footer span { color: var(--ink); }
   .controls-panel, .preview-panel { padding: 30px 22px; }
   .type-tab { font-size: 11px; }
   .type-tab svg { display: none; }
-  .style-grid, .wifi-fields { grid-template-columns: 1fr; }
-  .wifi-fields .field-group:last-child { grid-column: auto; }
+  .type-tabs { grid-template-columns: 1fr 1fr; }
+  .style-grid, .wifi-fields, .contact-fields { grid-template-columns: 1fr; }
+  .wifi-fields .field-group:last-child, .contact-fields .field-wide { grid-column: auto; }
   .qr-stage { margin-top: 35px; }
   footer { padding: 24px 18px 30px; }
   footer p:last-child { display: none; }
